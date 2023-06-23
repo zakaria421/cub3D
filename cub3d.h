@@ -6,7 +6,7 @@
 /*   By: zbentale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:21:09 by zbentale          #+#    #+#             */
-/*   Updated: 2023/06/23 17:04:00 by zbentale         ###   ########.fr       */
+/*   Updated: 2023/06/23 23:51:42 by zbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct s_map
 	char	*we;
 	char	*ea;
 	int		fd;
+	int 	xpm;
 	int		count;
 	int		f;
 	int		c;

@@ -1,7 +1,7 @@
-NO srcs/l.xpm
-SO ./makefile
-WE ./makefile
-EA ./makefile
+NO ./1.xpm
+SO d.xpm
+WE r.xpm
+EA u.xpm
 F 00,		00,		255
 C     255,   00,		150
 

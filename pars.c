@@ -6,7 +6,7 @@
 /*   By: zbentale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:40:26 by zbentale          #+#    #+#             */
-/*   Updated: 2023/06/23 17:25:46 by zbentale         ###   ########.fr       */
+/*   Updated: 2023/06/24 00:50:44 by zbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ char	*ft_strdupspace(const char *s1)
 	p = malloc(sizeof(char) * (len + 1));
 	if (p == 0)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
+	while (s1[i] != '\n' )
+	{	
 		p[i] = s1[i];
 		i++;
 	}
@@ -225,6 +225,7 @@ int	direction_take(t_map *map)
 void	check_the_map(t_map *map)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (map->allin[i])
@@ -232,7 +233,6 @@ void	check_the_map(t_map *map)
 		if (map->allin[i] == 'N' || map->allin[i] == 'S' || map->allin[i] == 'W'
 			|| map->allin[i] == 'E')
 		{
-			
 			map->check.player++;
 		}
 		if (map->allin[i] != '1' && map->allin[i] != '0'
@@ -247,11 +247,11 @@ void	check_the_map(t_map *map)
 		}
 		if (map->allin[i] == '\n')
 		{
-			int j = i;
+			j = i;
 			j++;
 			while (map->allin[j] == '\t' || map->allin[j] == ' ')
 				j++;
-			if(map->allin[j] == '\n' || map->allin[j] == '\0')
+			if (map->allin[j] == '\n' || map->allin[j] == '\0')
 			{
 				printf("Error: empty line\n");
 				exit(1);
@@ -265,7 +265,7 @@ void	check_the_map(t_map *map)
 		exit(1);
 	}
 }
-void check_first_lat_line(char *str)
+void	check_first_lat_line(char *str)
 {
 	int	i;
 
@@ -280,55 +280,54 @@ void check_first_lat_line(char *str)
 		i++;
 	}
 }
-int height_count(char **str)
+int	height_count(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }
-int the_first_char(char *str)
+int	the_first_char(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i] == ' ' || str[i] == '\t')
+	while (str[i] == ' ' || str[i] == '\t')
 		i++;
-	if(str[i] == '1')
+	if (str[i] == '1')
 		return (i);
 	else
 		return (-1);
 }
-int the_last_char(char *str)
+int	the_last_char(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		i++;
 	}
-		
 	i--;
-	while(str[i] == ' ' || str[i] == '\t')
+	while (str[i] == ' ' || str[i] == '\t')
 		i--;
-	if(str[i] == '1')
+	if (str[i] == '1')
 		return (i);
 	else
 		return (-1);
 }
-void check_if_its_valide(t_map *map)
+void	check_if_its_valide(t_map *map)
 {
-	int i;
-	int j;
-	int height;
-	int a;
-	int b;
-	int x;
-	int y;
-	
+	int	i;
+	int	j;
+	int	height;
+	int	a;
+	int	b;
+	int	x;
+	int	y;
+
 	i = 0;
 	j = 0;
 	a = 0;
@@ -336,13 +335,13 @@ void check_if_its_valide(t_map *map)
 	x = 0;
 	y = 0;
 	height = height_count(map->map);
-	while(map->map[i])
+	while (map->map[i])
 	{
-		if(i == 0)
+		if (i == 0)
 		{
 			check_first_lat_line(map->map[i]);
 		}
-		else if(i ==  height - 1)
+		else if (i == height - 1)
 		{
 			check_first_lat_line(map->map[i]);
 		}
@@ -350,47 +349,49 @@ void check_if_its_valide(t_map *map)
 		{
 			a = the_first_char(map->map[i]);
 			b = the_last_char(map->map[i]);
-			if(a == -1 || b == -1)
+			if (a == -1 || b == -1)
 			{
 				printf("Error: Nuh uh1 ;)\n");
 				exit(1);
 			}
 			a++;
 			b--;
-			while(a <= b)
+			while (a <= b)
 			{
-				if(map->map[i][a] == '0')
+				if (map->map[i][a] == '0')
 				{
 					x = the_last_char(map->map[i - 1]);
 					y = the_last_char(map->map[i + 1]);
-					if(a > x )
+					if (a > x)
 					{
-					printf("Error: Nuh uh6 ;)\n");
-							exit(1);
-						
+						printf("Error: Nuh uh6 ;)\n");
+						exit(1);
 					}
-					else if( a > y )
+					else if (a > y)
 					{
 						printf("Error: Nuh uh7 ;)\n");
-							exit(1);
-
+						exit(1);
 					}
-					else if(map->map[i - 1][a] == ' ' || map->map[i - 1][a] == '\t')
-						{
-							printf("Error: Nuh uh2 ;)\n");
-							exit(1);
-						}
-					else if(map->map[i + 1][a] == ' ' || map->map[i + 1][a] == '\t')
-						{
-							printf("Error: Nuh uh3 ;)\n");
-							exit(1);
-						}
-					else if(map->map[i][a - 1] == ' ' || map->map[i][a - 1] == '\t')
+					else if (map->map[i - 1][a] == ' ' || map->map[i
+							- 1][a] == '\t')
+					{
+						printf("Error: Nuh uh2 ;)\n");
+						exit(1);
+					}
+					else if (map->map[i + 1][a] == ' ' || map->map[i
+							+ 1][a] == '\t')
+					{
+						printf("Error: Nuh uh3 ;)\n");
+						exit(1);
+					}
+					else if (map->map[i][a - 1] == ' ' || map->map[i][a
+							- 1] == '\t')
 					{
 						printf("Error: Nuh uh 4;)\n");
 						exit(1);
 					}
-					else if(map->map[i][a + 1] == ' ' || map->map[i][a + 1] == '\t')
+					else if (map->map[i][a + 1] == ' ' || map->map[i][a
+							+ 1] == '\t')
 					{
 						printf("Error: Nuh uh5 ;)\n");
 						exit(1);
@@ -400,7 +401,6 @@ void check_if_its_valide(t_map *map)
 			}
 			a = 0;
 			b = 0;
-			
 		}
 		i++;
 	}
@@ -423,7 +423,82 @@ void	parse_cub3d_file(char *filename)
 	{
 		x = direction_take(&map);
 		if (x == 1)
+		{
+			
+			map.xpm = open(map.no, O_RDONLY);
+			
+			//map.xpm = open("l.xpm", O_RDONLY);
+					
+			if (map.xpm == -1)
+			{
+				printf("Error: failed to open NO texture\n");
+				exit(1);
+			}
+			else
+			{
+				// if(ft_strlen(map.no) - 4 < 0)
+				// {
+				// 	printf("Error: NO texture is not a .xpm file\n");
+				// 	exit(1);
+				// }
+				if(ft_strncmp(map.no + ft_strlen(map.no) - 4, ".xpm", 4) != 0)
+				{
+					printf("Error: NO texture is not a .xpm file\n");
+					exit(1);
+				}
+				close(map.xpm);
+			}
+			map.xpm = open(map.so, O_RDONLY);
+			if (map.xpm == -1)
+			{
+				printf("Error: failed to open SO texture\n");
+				exit(1);
+			}
+			else
+			{
+				if(ft_strncmp(map.so + ft_strlen(map.so) - 4, ".xpm", 4) != 0)
+				{
+					printf("Error: SO texture is not a .xpm file\n");
+					exit(1);
+				}
+				close(map.xpm);
+			}
+			map.xpm = open(map.we, O_RDONLY);
+			if (map.xpm == -1)
+			{
+				printf("Error: failed to open WE texture\n");
+				exit(1);
+			}
+			else
+			{
+				if(ft_strncmp(map.we + ft_strlen(map.we) - 4, ".xpm", 4) != 0)
+				{
+					printf("Error: WE texture is not a .xpm file\n");
+					exit(1);
+				}
+				close(map.xpm);
+			}
+			map.xpm = open(map.ea, O_RDONLY);
+			if (map.xpm == -1)
+			{
+				printf("Error: failed to open EA texture\n");
+				exit(1);
+			}
+			else
+			{
+				if(ft_strncmp(map.ea + ft_strlen(map.ea) - 4, ".xpm", 4) != 0)
+				{
+					printf("Error: EA texture is not a .xpm file\n");
+					exit(1);
+				}
+				close(map.xpm);
+			}
+			
+			
+			
 			break ;
+		}
+			
 		free(map.line);
 	}
 	if (x == 1)
@@ -441,8 +516,15 @@ void	parse_cub3d_file(char *filename)
 		map.map = ft_split(map.allin, '\n');
 		free(map.allin);
 		check_if_its_valide(&map);
+		start(&map);
 	}
-	start(&map);
+	else
+	{
+		printf("Error: invalid map\n");
+		exit(1);
+	}
+
+	
 	close(map.fd);
 }
 
