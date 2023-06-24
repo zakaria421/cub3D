@@ -1,7 +1,7 @@
-NO ./1.xpm
-SO d.xpm
-WE r.xpm
-EA u.xpm
+NO texture/l.xpm
+SO texture/d.xpm
+WE texture/r.xpm
+EA texture/u.xpm
 F 00,		00,		255
 C     255,   00,		150
 

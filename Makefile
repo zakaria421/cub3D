@@ -1,5 +1,5 @@
 NAME = cub3d
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 RM = rm -f
 MLX_LIB = ./minilibx_opengl_20191021/libmlx.a
 SRC = pars.c\
@@ -8,7 +8,14 @@ SRC = pars.c\
 	  libft.c\
 	  ft_split.c\
 	  window.c\
-
+	  utils.c\
+	  move.c\
+	  move_player.c\
+	  draw.c\
+	  draw_utils.c\
+	  raycasting.c\
+	  raycasting_utils.c\
+	  raycasting_utils2.c\
 
 
 OBJECT = ${SRC:.c=.o}
