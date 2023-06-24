@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:48:23 by zbentalh          #+#    #+#             */
-/*   Updated: 2023/06/24 11:49:54 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:30:13 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,12 @@ t_hit	*distance_calcu(t_cube *cube, t_hit *hit, t_hitfinder h)
 		hit->vertical = 1;
 	}
 	return (hit);
+}
+
+int	vertical_see(t_cube *cube, double angle)
+{
+	if (cube->map[(int)floor(cube->player.y / TOLE)][(int)floor(cube->player.x
+			/ TOLE)] == '1' || angle == 3 * M_PI / 2 || angle == M_PI / 2)
+		return (1);
+	return (0);
 }

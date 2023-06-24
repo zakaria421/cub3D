@@ -1,5 +1,5 @@
 NAME = cub3d
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 RM = rm -f
 MLX_LIB = ./minilibx_opengl_20191021/libmlx.a
 SRC = pars.c\

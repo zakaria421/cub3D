@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:21:09 by zbentale          #+#    #+#             */
-/*   Updated: 2023/06/24 11:58:28 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:30:43 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "float.h"
 # include "get_next_line/get_next_line.h"
 # include <errno.h>
-# include <fcntl.h>
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
@@ -180,4 +179,7 @@ t_hit			*distance_calcu(t_cube *cube, t_hit *hit, t_hitfinder h);
 t_hitfinder		y_and_ystep_vertical(t_cube *cube, double angle, t_hitfinder h);
 t_hitfinder		x_and_xstep_vertical(t_cube *cube, double angle, t_hitfinder h);
 size_t			ft_double_strlen(char **s);
+void			draw_vertical_wall(t_cube *cube, int tmp_x, t_hit hit,
+					t_draw draw);
+int				vertical_see(t_cube *cube, double angle);
 #endif

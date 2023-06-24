@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:25:48 by zbentalh          #+#    #+#             */
-/*   Updated: 2023/06/24 11:33:21 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:25:39 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,14 @@ void	my_mlx_pixel_put(t_cube *data, int x, int y, int color)
 	dst = data->mlx.data + (y * data->mlx.line_length + x
 			* (data->mlx.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	draw_vertical_wall(t_cube *cube, int tmp_x, t_hit hit, t_draw draw)
+{
+	if (hit.angle > M_PI / 2 && hit.angle < 3 * M_PI / 2)
+		my_mlx_pixel_put(cube, tmp_x, draw.y, texture_color(cube, draw.r,
+				(int)draw.l, 0));
+	else
+		my_mlx_pixel_put(cube, tmp_x, draw.y, texture_color(cube, draw.r,
+				(int)draw.l, 1));
 }

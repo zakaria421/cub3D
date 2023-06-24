@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:00:44 by zbentalh          #+#    #+#             */
-/*   Updated: 2023/06/24 11:57:58 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:24:01 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	draw_all(t_cube *cube, int y)
 		horizintol_hit(cube, angle, &x);
 		vertical_hit(cube, angle, &x);
 		d_game(cube, sqrt(pow(x.x - cube->player.x, 2) + pow(x.y
-					- cube->player.y, 2)), y, x);
+					- cube->player.y, 2)) * cos(angle - cube->player.angle),
+			y, x);
 		y++;
 		i++;
 		angle += (60 * M_PI / 180) / (WIDTH);

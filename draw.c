@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:12:32 by zbentalh          #+#    #+#             */
-/*   Updated: 2023/06/24 11:18:04 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:33:58 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,15 @@ void	draw_wall(t_cube *cube, int c, int tmp_x, t_hit hit)
 	while (draw.y < HIGHT && draw.y <= HIGHT / 2 + c / 2)
 	{
 		if (hit.vertical == 1)
-		{
-			if (hit.angle > M_PI / 2 && hit.angle < 3 * M_PI / 2)
-				my_mlx_pixel_put(cube, tmp_x, draw.y, texture_color(cube,
-							draw.r, (int)draw.l, 0));
-			else
-				my_mlx_pixel_put(cube, tmp_x, draw.y, texture_color(cube,
-							draw.r, (int)draw.l, 1));
-		}
+			draw_vertical_wall(cube, tmp_x, hit, draw);
 		else
 		{
 			if (hit.angle > 0 && hit.angle < M_PI)
 				my_mlx_pixel_put(cube, tmp_x, draw.y, texture_color(cube,
-							draw.z, (int)draw.l, 2));
+						draw.z, (int)draw.l, 2));
 			else
 				my_mlx_pixel_put(cube, tmp_x, draw.y, texture_color(cube,
-							draw.z, (int)draw.l, 3));
+						draw.z, (int)draw.l, 3));
 		}
 		draw.y++;
 		draw.l += draw.i;
@@ -76,8 +69,8 @@ void	draw_wall(t_cube *cube, int c, int tmp_x, t_hit hit)
 
 void	d_game(t_cube *cube, float i, int x, t_hit hit)
 {
-	double c;
-	float tmp_x;
+	double	c;
+	float	tmp_x;
 
 	tmp_x = (float)TOLE / i;
 	c = tmp_x * ((WIDTH / 2) / tan(30 * M_PI / 180));

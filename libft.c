@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zbentale <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:39:10 by zbentale          #+#    #+#             */
-/*   Updated: 2023/06/24 00:45:49 by zbentale         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:28:45 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	size_t	i;
@@ -34,6 +35,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	}
 	return (0);
 }
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
