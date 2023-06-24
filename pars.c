@@ -6,7 +6,7 @@
 /*   By: zbentale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:40:26 by zbentale          #+#    #+#             */
-/*   Updated: 2023/06/24 00:50:44 by zbentale         ###   ########.fr       */
+/*   Updated: 2023/06/24 12:40:33 by zbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -436,11 +436,11 @@ void	parse_cub3d_file(char *filename)
 			}
 			else
 			{
-				// if(ft_strlen(map.no) - 4 < 0)
-				// {
-				// 	printf("Error: NO texture is not a .xpm file\n");
-				// 	exit(1);
-				// }
+				if(ft_strlen(map.no) < 5)
+				{
+					printf("Error: NO texture is not a .xpm file\n");
+					exit(1);
+				}
 				if(ft_strncmp(map.no + ft_strlen(map.no) - 4, ".xpm", 4) != 0)
 				{
 					printf("Error: NO texture is not a .xpm file\n");
@@ -456,6 +456,11 @@ void	parse_cub3d_file(char *filename)
 			}
 			else
 			{
+				if(ft_strlen(map.so) < 5)
+				{
+					printf("Error: SO texture is not a .xpm file\n");
+					exit(1);
+				}
 				if(ft_strncmp(map.so + ft_strlen(map.so) - 4, ".xpm", 4) != 0)
 				{
 					printf("Error: SO texture is not a .xpm file\n");
@@ -471,6 +476,11 @@ void	parse_cub3d_file(char *filename)
 			}
 			else
 			{
+				if(ft_strlen(map.we) < 5)
+				{
+					printf("Error: WE texture is not a .xpm file\n");
+					exit(1);
+				}
 				if(ft_strncmp(map.we + ft_strlen(map.we) - 4, ".xpm", 4) != 0)
 				{
 					printf("Error: WE texture is not a .xpm file\n");
@@ -486,6 +496,11 @@ void	parse_cub3d_file(char *filename)
 			}
 			else
 			{
+				if(ft_strlen(map.ea) < 5)
+				{
+					printf("Error: EA texture is not a .xpm file\n");
+					exit(1);
+				}
 				if(ft_strncmp(map.ea + ft_strlen(map.ea) - 4, ".xpm", 4) != 0)
 				{
 					printf("Error: EA texture is not a .xpm file\n");
