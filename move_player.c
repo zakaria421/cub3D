@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:00:19 by zbentalh          #+#    #+#             */
-/*   Updated: 2023/06/24 11:01:58 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/25 14:36:28 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,83 @@
 
 void	update_player_toward_left(t_cube *cube)
 {
-	cube->player.x += 5 * cos(cube->player.angle - (M_PI / 2));
-	cube->player.y += 5 * sin(cube->player.angle - (M_PI / 2));
+	cube->player.x += 25 * cos(cube->player.angle - (M_PI / 2));
+	cube->player.y += 25 * sin(cube->player.angle - (M_PI / 2));
 	if (cube->map[(int)((cube->player.y) / TOLE)][(int)((cube->player.x)
 			/ TOLE)] && (cube->map[(int)((cube->player.y)
 				/ TOLE)][(int)((cube->player.x) / TOLE)] == '1'
 			|| wall_check_test(cube) == 1))
 	{
-		cube->player.x -= 5 * cos(cube->player.angle - (M_PI / 2));
-		cube->player.y -= 5 * sin(cube->player.angle - (M_PI / 2));
+		cube->player.x -= 25 * cos(cube->player.angle - (M_PI / 2));
+		cube->player.y -= 25 * sin(cube->player.angle - (M_PI / 2));
+	}
+	else
+	{
+		cube->player.x -= 20 * cos(cube->player.angle - (M_PI / 2));
+		cube->player.y -= 20 * sin(cube->player.angle - (M_PI / 2));
 	}
 	return ;
 }
 
 void	update_player_toward_right(t_cube *cube)
 {
-	cube->player.x += 5 * cos(cube->player.angle + (M_PI / 2));
-	cube->player.y += 5 * sin(cube->player.angle + (M_PI / 2));
+	cube->player.x += 25 * cos(cube->player.angle + (M_PI / 2));
+	cube->player.y += 25 * sin(cube->player.angle + (M_PI / 2));
 	if (cube->map[(int)((cube->player.y) / TOLE)][(int)((cube->player.x)
 			/ TOLE)] && (cube->map[(int)((cube->player.y)
 				/ TOLE)][(int)((cube->player.x) / TOLE)] == '1'
 			|| wall_check_test(cube) == 1))
 	{
-		cube->player.x -= 5 * cos(cube->player.angle + (M_PI / 2));
-		cube->player.y -= 5 * sin(cube->player.angle + (M_PI / 2));
+		cube->player.x -= 25 * cos(cube->player.angle + (M_PI / 2));
+		cube->player.y -= 25 * sin(cube->player.angle + (M_PI / 2));
+	}
+	else
+	{
+		cube->player.x -= 20 * cos(cube->player.angle + (M_PI / 2));
+		cube->player.y -= 20 * sin(cube->player.angle + (M_PI / 2));
 	}
 	return ;
 }
 
 void	update_player_forward(t_cube *cube)
 {
-	cube->player.x += 5 * cos(cube->player.angle);
+	cube->player.x += 25 * cos(cube->player.angle);
 	if (cube->map[(int)((cube->player.y) / TOLE)][(int)((cube->player.x)
 			/ TOLE)] && (cube->map[(int)((cube->player.y)
 				/ TOLE)][(int)((cube->player.x) / TOLE)] == '1'
 			|| wall_check_test(cube) == 1))
-		cube->player.x -= 5 * cos(cube->player.angle);
-	cube->player.y += 5 * sin(cube->player.angle);
+		cube->player.x -= 25 * cos(cube->player.angle);
+	else
+		cube->player.x -= 20 * cos(cube->player.angle);
+	cube->player.y += 25 * sin(cube->player.angle);
 	if (cube->map[(int)((cube->player.y) / TOLE)][(int)((cube->player.x)
 			/ TOLE)] && (cube->map[(int)((cube->player.y)
 				/ TOLE)][(int)((cube->player.x) / TOLE)] == '1'
 			|| wall_check_test(cube) == 1))
-		cube->player.y -= 5 * sin(cube->player.angle);
+		cube->player.y -= 25 * sin(cube->player.angle);
+	else
+		cube->player.y -= 20 * sin(cube->player.angle);
 	return ;
 }
 
 void	update_player_backward(t_cube *cube)
 {
-	cube->player.x -= 5 * cos(cube->player.angle);
+	cube->player.x -= 25 * cos(cube->player.angle);
 	if (cube->map[(int)((cube->player.y) / TOLE)][(int)((cube->player.x)
 			/ TOLE)] && (cube->map[(int)((cube->player.y)
 				/ TOLE)][(int)((cube->player.x) / TOLE)] == '1'
 			|| wall_check_test(cube) == 1))
-		cube->player.x += 5 * cos(cube->player.angle);
-	cube->player.y -= 5 * sin(cube->player.angle);
+		cube->player.x += 25 * cos(cube->player.angle);
+	else
+		cube->player.x += 20 * cos(cube->player.angle);
+	cube->player.y -= 25 * sin(cube->player.angle);
 	if (cube->map[(int)((cube->player.y) / TOLE)][(int)((cube->player.x)
 			/ TOLE)] && (cube->map[(int)((cube->player.y)
 				/ TOLE)][(int)((cube->player.x) / TOLE)] == '1'
 			|| wall_check_test(cube) == 1))
-		cube->player.y += 5 * sin(cube->player.angle);
+		cube->player.y += 25 * sin(cube->player.angle);
+	else
+		cube->player.y += 20 * sin(cube->player.angle);
 	return ;
 }
 

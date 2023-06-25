@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:12:32 by zbentalh          #+#    #+#             */
-/*   Updated: 2023/06/24 17:33:58 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/25 13:07:35 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	d_game(t_cube *cube, float i, int x, t_hit hit)
 	double	c;
 	float	tmp_x;
 
+	if (i < 1)
+	 i = 1;
 	tmp_x = (float)TOLE / i;
 	c = tmp_x * ((WIDTH / 2) / tan(30 * M_PI / 180));
-	if (c > 6000)
-		c = 6000;
 	draw_wall(cube, c, x, hit);
 }

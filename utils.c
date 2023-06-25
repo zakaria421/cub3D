@@ -6,7 +6,7 @@
 /*   By: zbentalh <zbentalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 10:51:47 by zbentalh          #+#    #+#             */
-/*   Updated: 2023/06/24 10:56:40 by zbentalh         ###   ########.fr       */
+/*   Updated: 2023/06/25 10:24:41 by zbentalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ float	calcul_c(int y, int c)
 	float	i;
 
 	i = 0;
-	while (y <= HIGHT / 2 + c / 2)
+	if (c < 0)
+	c = 0;
+	while  (y <= HIGHT / 2 + c / 2)
 	{
 		y++;
 		i++;
